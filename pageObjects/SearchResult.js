@@ -7,7 +7,7 @@ export default class SearchResult{
         this.productNames = page.locator("//div[contains(@class,' product-one')]//a[contains(@href,'product-detail')]//h4[contains(@class,'product-title')]");
         this.resultText = this.page.locator("//h3[contains(@class,'sub-title') and contains(text(),'item')]");
 
-    }
+    }n
 
     async visitResultProducts(){
         const totalProducts = await this.productLinks.count();
