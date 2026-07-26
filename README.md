@@ -8,26 +8,28 @@ This repository is dedicated to learning, practicing, and mastering web automati
 - **Locators:** Mastering different built-in locator strategies in Playwright.
 - **Hooks & Framework Basics:** Organizing test suites using `beforeEach`, `afterEach`, and custom configurations.
 
-## 🛠️ Prerequisites
-Before running the tests, ensure you have the following installed on your machine:
-- [Node.js](https://nodejs.org) (v16 or higher)
-- [Visual Studio Code](https://visualstudio.com) (Recommended IDE)
+## 📂 Project Structure
+```text
+├── tests/               # All test files (e.g., example.spec.js)
+├── playwright.config.js # Playwright configuration file for JavaScript
+├── package.json         # Project dependencies and scripts
+└── README.md            # Documentation
+```
 
 ## 📦 Installation & Setup
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com
-   cd pikaboo-playwright-practice
+   git clone https://github.com/pikaboo-playwright-practice
    ```
 
-2. **Initialize Playwright (Select JavaScript when prompted):**
+2. **Initialize Playwright with  JavaScript:**
    ```bash
    npm init playwright@latest
    ```
    *During setup, choose `JavaScript`, name your test folder (default is `tests`), and select `false` for GitHub Actions unless needed.*
 
-3. **Install dependencies (If cloning an existing setup):**
+3. **Install dependencies:**
    ```bash
    npm install
    ```
@@ -55,14 +57,6 @@ You can run your Playwright tests using the following commands:
   ```bash
   npx playwright show-report
   ```
-
-## 📂 Project Structure
-```text
-├── tests/               # All test files (e.g., example.spec.js)
-├── playwright.config.js # Playwright configuration file for JavaScript
-├── package.json         # Project dependencies and scripts
-└── README.md            # Documentation
-```
 
 ## 📝 Author 
 Ankan Das
