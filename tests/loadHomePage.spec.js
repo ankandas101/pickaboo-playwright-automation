@@ -9,10 +9,9 @@ test('Load Home page', async ({ page }) => {
   await page.waitForTimeout(3000);
 });
 
-// test('Visit Login Page', async ({page}) => {
-// await page.goto('https://www.pickaboo.com/');
-// await page.locator("//span[contains(text(),'Login')]").click();
-// });
-
+test('Navigate Login Page', async ({page}) => {
+await page.goto('https://www.pickaboo.com/');
+await page.locator("//span[contains(text(),'Login')]").click();
+});
 
 });

@@ -7,14 +7,13 @@ export default class SearchResult{
         this.productNames = page.locator("//div[contains(@class,' product-one')]//a[contains(@href,'product-detail')]//h4[contains(@class,'product-title')]");
         this.resultText = this.page.locator("//h3[contains(@class,'sub-title') and contains(text(),'item')]");
 
-    }n
+    }
 
     async visitResultProducts(){
         const totalProducts = await this.productLinks.count();
         const totalFoundProduct = await this.getResultNumber();
-
-        console.log("Total search products found:" + totalFoundProduct );
         
+        console.log("Total search products found:" + totalFoundProduct );
         if(totalFoundProduct>0){
             console.log("Visit Three search results.");
             for (let i = 0; i < 3; i++) {

@@ -8,9 +8,7 @@ test.describe("Product Search Verify Test",() =>{
     const homePage = new HomePage(page);
     await homePage.makeSearch("phone");
     await page.waitForTimeout(3000);
-
     const searchResult = new SearchResult(page);
-
     await searchResult.visitResultProducts();
     await page.waitForTimeout(3000);
     });
