@@ -11,6 +11,7 @@ This repository is dedicated to learning, practicing, and mastering web automati
 ## 📂 Project Structure
 ```text
 ├── tests/               # All test files (e.g., example.spec.js)
+├── pageObjects/         # All Pages locators
 ├── playwright.config.js # Playwright configuration file for JavaScript
 ├── package.json         # Project dependencies and scripts
 └── README.md            # Documentation
