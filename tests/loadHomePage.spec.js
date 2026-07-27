@@ -1,16 +1,31 @@
 import { test, expect } from '@playwright/test';
 import { assert } from 'node:console';
+import HomePage from '../pageObjects/HomePage';
 
-test.describe('Load HomePage', () => {
+test.describe('Verify HomePage', () => {
 
-test('Load Home page', async ({ page }) => {
+  test.beforeEach(async({page}) => {
   await page.goto('https://www.pickaboo.com/');
-  await page.waitForTimeout(1000);
-});
+  const home = new HomePage(page);
+  });
 
-test('Navigate Login Page', async ({page}) => {
-await page.goto('https://www.pickaboo.com/');
-await page.locator("//span[contains(text(),'Login')]").click();
-});
+    test('Load HomePage with correct title', async ({ page }) => {
+    await expect(page).toHaveTitle('Pickaboo: The Best E-Commerce Platform in Bangladesh for Hassle-Free Online Shopping');
+    await page.waitForTimeout(1000);
+    });
+
+    test('verify that Navigate Login button appaare', async ({page}) => {
+    await page.waitForTimeout(500);
+    await expect(page.locator("//span[contains(text(),'Login')]")).toBeVisible();
+    });
+
+    test('Verify that Slide load successfull', async({page}) =>{
+    await expect(page.locator("//div[@class='home-banner__slider']//div[@data-index='0' and contains(@class,'slick-slide')]")).toBeVisible();
+    });
+
+    test('Verify that homepage load with correct status code', async({page}) =>{
+    const response = await page.goto('https://www.pickaboo.com/');
+    expect(response.status()).toBe(200);
+    });
 
 });
