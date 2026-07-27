@@ -12,11 +12,15 @@ let login;
 
     test('Verify that user can not login with invalid email and password', async({page}) => {
     login.loginWithEmail("ankan@gmail.com","12345");
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(1500);
     const msg = await login.getAlertMessage();
     await expect(msg).toContain('The account sign-in was incorrect or your account is disabled temporarily');
     });
 
-
-
+    test('Verify that user can login with valid email and password', async({page}) => {
+    login.loginWithEmail("ankanbd2001@gmail.com","ankandas.pikabo");
+    await page.waitForTimeout(1500);
+    const msg = await login.getAlertMessage();
+    await expect(msg).toContain('Logged in successfully');
+    });
 });
