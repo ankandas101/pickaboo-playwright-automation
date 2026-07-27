@@ -21,7 +21,4 @@ export default class LoginPage{
     return message;
     }
 
-
 }
-
-//
