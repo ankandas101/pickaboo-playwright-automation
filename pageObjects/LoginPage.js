@@ -1,24 +1,25 @@
-export default class LoginPage{
+import { BasePage } from "./BasePage";
 
-    constructor(page){
-        this.page = page;
-        this.changeLoginMethodBtn = page.locator("//div[contains(text(),'Login with ')]");
-        this.inputEmail = page.locator("//input[@name='userEmail']");
-        this.inputpassword = page.locator("//input[@name='userPassword' and @type = 'password']");
-        this.loginBtn = page.locator("//button[@type='submit' ] /span[contains( text(),'Login')]");
+export default class LoginPage extends BasePage {
+
+    constructor(page) {
+        super(page);
+        this.inputEmail = this.textboxLocator('Email Address');
+        this.inputpassword = this.textboxLocator('Password');
     }
 
-    async loginWithEmail(email,password){
-    await this.changeLoginMethodBtn.click();
-    await this.inputEmail.fill(`${email}`);
-    await this.inputpassword.fill(`${password}`);
-    await this.page.waitForTimeout(2000); 
-    await this.loginBtn.click();
+    async loginWithEmail(email, password) {
+        await this.clickOnText('Login with Email');
+        await this.page.waitForTimeout(1000);
+        await this.fillInput(this.inputEmail, email);
+        await this.fillInput(this.inputpassword, password);
+        await this.page.waitForTimeout(300);
+        await this.clickOnButton('Login');
     }
-
-    async getAlertMessage(){
-    const message = await this.page.locator("//div[@class='MuiAlert-message']").textContent();
-    return message;
+    async getAlertMessage() {
+        const alert = this.page.locator("div.MuiAlert-message");
+        await alert.waitFor({ state: 'visible', timeout: 3000 });
+        return await alert.textContent();
     }
 
 }
