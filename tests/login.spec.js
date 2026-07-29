@@ -22,6 +22,7 @@ test.describe('Verify Login System', () => {
     });
 
     test('Verify that user can login with valid email and password', async ({ page }) => {
+        //await page.pause();
         await login.loginWithEmail("ankanbd2001@gmail.com", "ankandas.pikabo");
         await page.waitForTimeout(500);
         const msg = await login.loginAlertMessage();

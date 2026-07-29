@@ -10,12 +10,16 @@ export default class Shipping extends BasePage {
     this.areaDropdown = page.getByRole('button', { name: 'Open' }).nth(2);
     this.deleveryMet = page.getByRole('button', { name: 'Open' }).nth(3);
 
-
+    this.cngAddress = page.locator("//div[@class='buttons-wrap']//p[contains(text(),'Change address')]");
   }
 
   async addShippingAddress() {
     await this.addNewShippingBtn.click({ timeout: 10000 });
     await this.page.waitForLoadState('domcontentloaded');
+  }
+
+  async changeShippingAddress(){
+  return  this.cngAddress; 
   }
 
 

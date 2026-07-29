@@ -4,16 +4,17 @@ import Shipping from '../pageObjects/Shipping';
 
 test.describe('Verify user shipping address', async () => {
   let shipping;
-
   test.beforeEach(async ({ page }) => {
     await page.goto('https://www.pickaboo.com/checkout/shipping', { waitUntil: 'domcontentloaded' });
     shipping = new Shipping(page);
   });
 
-  test('Verify that user can add new shipping address', async ({ page }) => {
-    await page.waitForLoadState('domcontentloaded');
-    await page.pause();
-    await shipping.addShippingAddress();
+  test('Verify that user can see button to change shipping address', async ({ page }) => {
+    await expect(page.locator("//div[@class='buttons-wrap']//p[contains(text(),'Change address')]")).toBeVisible();
+  });
+
+  test('Verify that user can see button to add new shipping address', async ({ page }) => {
+    await expect(page.locator("//div[@class='buttons-wrap']//p[contains(text(),'Add New Address')]")).toBeVisible();
   });
 
 }); 
