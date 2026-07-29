@@ -10,17 +10,18 @@ test.describe("Verify HomePage", () => {
   });
 
   test("Load HomePage with correct title", async ({ page }) => {
-    //  await page.pause();
     await expect(page).toHaveTitle("Pickaboo: The Best E-Commerce Platform in Bangladesh for Hassle-Free Online Shopping");
     await page.waitForTimeout(1000);
   });
 
   test("verify that Navigate Login button appaare", async ({ page }) => {
     await page.waitForTimeout(500);
+    await page.waitForLoadState('domcontentloaded');
     await expect(page.locator("//span[contains(text(),'Login')]")).toBeVisible();
   });
 
   test("Verify that Slide load successfull", async ({ page }) => {
+    await page.waitForLoadState('domcontentloaded');
     await expect(page.locator("//div[@class='home-banner__slider']//div[@data-index='0' and contains(@class,'slick-slide')]")).toBeVisible({ timeout: 10000 });
   });
 

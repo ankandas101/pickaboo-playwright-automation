@@ -3,8 +3,8 @@ import { BasePage } from "./BasePage";
 
 export default class SearchResult extends BasePage {
     constructor(page) {
-        // super(page);
-        this.page = page;
+        super(page);
+
         this.productLinks = page.locator("//div[contains(@class,' product-one')]//a[contains(@href,'product-detail')]");
         this.productNames = page.locator("//div[contains(@class,' product-one')]//a[contains(@href,'product-detail')]//h4[contains(@class,'product-title')]");
         this.resultText = this.page.locator("//h3[contains(@class,'sub-title') and contains(text(),'item')]");
@@ -12,7 +12,7 @@ export default class SearchResult extends BasePage {
 
     async visitSearchResult(number_of_visit) {
         const NumOfProducts = await this.productLinks.count();
-        console.log("Total search products found:" + NumOfProducts);
+        console.log("products found on first page:" + NumOfProducts);
 
         if (NumOfProducts > 0) {
             console.log(`Visit ${number_of_visit} search results.`);
@@ -43,6 +43,13 @@ export default class SearchResult extends BasePage {
         const number = parseInt(fullText.match(/\d+/)[0]);
         console.log("Total Result Found: " + number);
         return number;
+    }
+
+
+
+    async clickOnFirstResult(){
+    await this.productLinks.nth(0).click();
+    await this.page.waitForTimeout(3000);
     }
 
 } 

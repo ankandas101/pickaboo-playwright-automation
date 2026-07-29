@@ -9,6 +9,7 @@ export default class LoginPage extends BasePage {
     }
 
     async loginWithEmail(email, password) {
+        await this.page.waitForTimeout(500);
         await this.clickOnText('Login with Email');
         await this.page.waitForTimeout(1000);
         await this.fillInput(this.inputEmail, email);
@@ -16,9 +17,9 @@ export default class LoginPage extends BasePage {
         await this.page.waitForTimeout(300);
         await this.clickOnButton('Login');
     }
-    async getAlertMessage() {
+    async loginAlertMessage() {
         const alert = this.page.locator("div.MuiAlert-message");
-        await alert.waitFor({ state: 'visible', timeout: 3000 });
+        await alert.waitFor({ state: 'visible', timeout: 10000 });
         return await alert.textContent();
     }
 
