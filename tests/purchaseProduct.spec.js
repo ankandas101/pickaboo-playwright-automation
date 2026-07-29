@@ -50,24 +50,16 @@ test.describe('Verify a valid purchase', async () => {
     }
 
 
-  //  await page.waitForLoadState('domcontentloaded');
-//    await page.waitForTimeout(5000);
     
     await page.waitForLoadState('domcontentloaded');
-    await page.pause();
-
-
-
 
     await cart.clickProceedToCheckout();
-   // await expect(page).toHaveURL(/.*shipping/);
  
     await page.waitForLoadState('domcontentloaded');
 
     await shipping.addShippingAddress();
     await page.waitForLoadState('domcontentloaded');
     await shipping.fillShippingDetails();
-        await page.pause();
 
   });
 
