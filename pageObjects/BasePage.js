@@ -55,7 +55,7 @@ export class BasePage {
 
     async getAlertMessage() {
         const alert = this.page.locator("div.MuiAlert-message");
-        await alert.waitFor({ state: 'visible', timeout: 10000 });
+        await alert.waitFor({ state: 'visible'});
         return await alert.textContent();
     }
 

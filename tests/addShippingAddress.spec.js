@@ -9,11 +9,11 @@ test.describe('Verify user shipping address', async () => {
     shipping = new Shipping(page);
   });
 
-  test('Verify that user can see button to change shipping address', async ({ page }) => {
+  test('Verify that user can see button Change address', async ({ page }) => {
     await expect(page.locator("//div[@class='buttons-wrap']//p[contains(text(),'Change address')]")).toBeVisible();
   });
 
-  test('Verify that user can see button to add new shipping address', async ({ page }) => {
+  test('Verify that user can see button Add New Address', async ({ page }) => {
     await expect(page.locator("//div[@class='buttons-wrap']//p[contains(text(),'Add New Address')]")).toBeVisible();
   });
 

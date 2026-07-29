@@ -27,14 +27,13 @@ test.describe('Verify a valid purchase', async () => {
     await product.selectColor();
     await page.waitForTimeout(1000);
     await product.clickBuyNow();
-    await page.waitForLoadState('domcontentloaded');
-
+    //await page.waitForLoadState('domcontentloaded');
     const msg = await product.getAlertMessage();
     console.log(msg);
 
     await page.waitForTimeout(2000);
     currentUrl = page.url();
-    console.log(currentUrl);
+    //console.log(currentUrl);
 
     if (currentUrl.includes('https://www.pickaboo.com/login?itemcartguest')) {
       console.log("User is not Logged in , Tring to Login ");
