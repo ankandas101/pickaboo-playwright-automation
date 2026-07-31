@@ -16,7 +16,7 @@ export default class Shipping extends BasePage {
   async addShippingAddress() {
     await this.page.waitForLoadState('domcontentloaded');
 
-    await this.addNewShippingBtn.click({ timeout: 10000 });
+    await this.addNewShippingBtn.click({ timeout: 2000 });
     await this.page.waitForLoadState('domcontentloaded');
   }
 
@@ -28,16 +28,14 @@ export default class Shipping extends BasePage {
   async fillShippingDetails() {
     await this.fillInput((this.textboxLocator('Enter your first name')), 'ankan');
     await this.fillInput((this.textboxLocator('Enter your last name')), 'das');
-
     await this.fillInput((this.page.getByRole('spinbutton', { name: 'Enter your number' })), '01745009965');
-
     await this.fillInput((this.textboxLocator('Enter H. no, R. no, block/sector')), 'khulna, sonadanga');
-
+    
     console.log("Selecting Division...");
     await this.divisionDropdown.click();
     await this.selectOption('Khulna');
-    console.log("Selecting City...");
 
+    console.log("Selecting City...");
     await this.cityDropdown.click();
     await this.selectOption('Bagerhat');
 
@@ -46,13 +44,13 @@ export default class Shipping extends BasePage {
     await this.selectOption('Bagerhat Sadar');
 
     console.log("Selecting Delevery Method...");
-
     await this.deleveryMet.click();
     await this.selectOption('Use as default shipping address');
 
-    await this.clickOnButton('Save Address');
-    await this.page.waitForLoadState('domcontentloaded');
 
+    await this.clickOnButton('Save Address');
+    await this.page.waitForTimeout(500);
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
 }

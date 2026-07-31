@@ -6,16 +6,19 @@ export default class Cart extends BasePage {
   }
 
   async clickProceedToCheckout() {
+    await this.page.pause();
     this.page.waitForTimeout(2000);
     const isQuantifyUnavailable = this.textLocator('Some of the products are out');
-    if (isQuantifyUnavailable.isVisible()) {
-      console.log("Some of the products are out");
-    } else {
-      console.log("Product Available..we proceed to check out");
 
-    }
+    if (isQuantifyUnavailable.isVisible()) {
+      console.log("Some of the products are out of stoke");
+    } else {
+
+    console.log("All Product Available..we proceed to check out");
     await this.clickOnText('Proceed to checkout');
     await this.page.waitForLoadState('domcontentloaded');
+    }
+
 
   }
 

@@ -49,7 +49,7 @@ export default class SearchResult extends BasePage {
 
     async clickOnFirstResult(){
     await this.productLinks.nth(0).click();
-    await this.page.waitForTimeout(3000);
+    //await this.page.waitForTimeout(3000);
     }
 
 } 

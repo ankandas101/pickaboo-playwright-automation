@@ -21,17 +21,17 @@ test.describe('Verify a valid purchase', async () => {
 
 
   test('Verify that user can search a product and able to buy', async ({ page }) => {
+    await page.pause();
+
     await page.waitForTimeout(1000);
     await home.makeSearch('Redmi Note 15');
     await searchResult.clickOnFirstResult();
     await product.selectColor();
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(200);
     await product.clickBuyNow();
-    //await page.waitForLoadState('domcontentloaded');
     const msg = await product.getAlertMessage();
     console.log(msg);
-
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(4000);
     currentUrl = page.url();
     //console.log(currentUrl);
 
@@ -49,17 +49,18 @@ test.describe('Verify a valid purchase', async () => {
     }
 
 
-    
+
     await page.waitForLoadState('domcontentloaded');
 
     await cart.clickProceedToCheckout();
- 
+
     await page.waitForLoadState('domcontentloaded');
 
     await shipping.addShippingAddress();
     await page.waitForLoadState('domcontentloaded');
     await shipping.fillShippingDetails();
 
+    await page.pause();
   });
 
 }); 

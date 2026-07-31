@@ -18,7 +18,7 @@ export class BasePage {
     }
 
     async clickOnText(text) {
-        await this.textLocator(text).click({timeout: 50000});
+        await this.textLocator(text).click({timeout: 2000});
     }
 
     textboxLocator(name) {
@@ -40,6 +40,7 @@ export class BasePage {
     }
 
     async fillInput(locator, value) {
+       // expect(await locator.toBeVisible());
         await locator.fill(value);
     }
 
@@ -55,12 +56,17 @@ export class BasePage {
 
     async getAlertMessage() {
         const alert = this.page.locator("div.MuiAlert-message");
-        await alert.waitFor({ state: 'visible'});
+        await expect.soft(alert).toBeVisible({ timeout: 5000 });
         return await alert.textContent();
     }
 
     async selectOption(name){
     const clk =  await this.page.getByRole('option', { name: name , exact: true});
     await clk.click();
+    }
+
+
+    spanLocator(hasText){
+        return this.page.locator('span').filter({ hasText: hasText, exact:true });
     }
 }

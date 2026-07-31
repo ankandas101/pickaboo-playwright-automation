@@ -1,3 +1,4 @@
+import { expect } from "@playwright/test";
 import { BasePage } from "./BasePage";
 
 export default class ProductPage extends BasePage {
@@ -27,9 +28,9 @@ export default class ProductPage extends BasePage {
     }
 
     async clickBuyNow() {
-        this.page.waitForTimeout(500);
+        await expect(this.linkLocator('Buy Now')).toBeVisible();
         await this.clickOnLink('Buy Now');
-    }
+    } 
 
 
 
