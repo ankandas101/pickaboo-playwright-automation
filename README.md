@@ -1,4 +1,4 @@
-# pikaboo-playwright-practice
+# pikaboo-playwright-automation
 
 This repository is dedicated to learning, practicing, and mastering web automation and end-to-end (E2E) testing using **Playwright** with **JavaScript**.
 
@@ -21,7 +21,7 @@ This repository is dedicated to learning, practicing, and mastering web automati
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/pikaboo-playwright-practice
+   https://github.com/ankandas101/pikaboo-playwright-automation.git
    ```
 
 2. **Initialize Playwright with  JavaScript:**
